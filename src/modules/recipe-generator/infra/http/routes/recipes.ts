@@ -1,15 +1,9 @@
-import express from "express";
+import express from 'express';
 
-const recipeRouter = express.Router()
+const recipeRouter = express.Router();
 
 recipeRouter.get('/', (req, res) => {
-    res.send('Hey PEASANT!')
-})
+  res.send('Hey PEASANT!');
+});
 
-
-
-export { recipeRouter }
-
-// post ---> /api/v0/member/recipe ---> saveRecipe usecase
-
-// get ---> /api/v0/member/recipe ---> getSavedRecipes usecase
+export { recipeRouter };
