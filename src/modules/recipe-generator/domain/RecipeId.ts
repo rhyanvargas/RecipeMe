@@ -1,18 +1,18 @@
-export interface RecipeIdProps {
-    id?: string
-}
-export class RecipeId {
-    props: RecipeIdProps
+import { Entity } from "../../../shared/domain/Entity";
+import { UniqueEntityID } from "../../../shared/domain/UniqueEntityID";
 
-    get id(): string {
-        return this.id || '';
-    }
+export class RecipeId extends Entity<any>{
 
-    private constructor(props: RecipeIdProps) {
-        this.props = props
-    }
 
-    public static create(props: RecipeIdProps): RecipeId {
-        return new RecipeId(props);
-    }
+  get id(): UniqueEntityID {
+    return this._id;
+  }
+
+  private constructor(id?: UniqueEntityID) {
+    super(null, id)
+  }
+
+  public static create(id?: UniqueEntityID): RecipeId {
+    return new RecipeId(id);
+  }
 }

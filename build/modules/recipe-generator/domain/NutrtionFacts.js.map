@@ -1,0 +1,1 @@
+{"version":3,"file":"NutrtionFacts.js","sourceRoot":"","sources":["../../../../src/modules/recipe-generator/domain/NutrtionFacts.ts"],"names":[],"mappings":";;;AAIA,MAAa,cAAc;IAGzB,YAAmB,KAA0B;QAC3C,IAAI,CAAC,KAAK,GAAG,KAAK,CAAC;IACrB,CAAC;IAEM,MAAM,CAAC,MAAM,CAAC,KAA0B;QAC7C,MAAM,cAAc,GAAG,IAAI,cAAc,CAAC,KAAK,CAAC,CAAC;QAEjD,OAAO,cAAc,CAAC;IACxB,CAAC;CACF;AAZD,wCAYC"}

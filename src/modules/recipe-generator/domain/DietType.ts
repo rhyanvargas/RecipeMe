@@ -1,4 +1,12 @@
-
-export type DietType = 'vegetarian' | 'vegan' | 'glutenFree' |
-    'dairyFree' | 'veryHealthy' | 'cheap' | 'veryPopular' | 'sustainable' |
-    'lowFodmap' | 'ketogenic' | 'whole30'
+export type DietType = Array<string>;
+  // | 'vegetarian'
+  // | 'vegan'
+  // | 'glutenFree'
+  // | 'dairyFree'
+  // | 'veryHealthy'
+  // | 'cheap'
+  // | 'veryPopular'
+  // | 'sustainable'
+  // | 'lowFodmap'
+  // | 'ketogenic'
+  // | 'whole30';

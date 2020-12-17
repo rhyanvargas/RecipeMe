@@ -1,1 +1,1 @@
-export type Allergies = Array<string>
+export type Allergies = Array<string>;

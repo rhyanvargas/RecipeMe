@@ -1,1 +1,1 @@
-export type Ingredients = Array<string>
+export type Ingredients = Array<string>;

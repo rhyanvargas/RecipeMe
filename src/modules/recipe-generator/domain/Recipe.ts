@@ -1,35 +1,41 @@
-import { DietType } from "./DietType"
-import { Ingredients } from "./Ingredients"
-import { NutritionFacts } from "./NutrtionFacts"
-import { RecipeId } from "./RecipeId"
+import { AggregateRoot } from '../../../shared/domain/AggregateRoot';
+import { Entity } from '../../../shared/domain/Entity';
+import { UniqueEntityID } from '../../../shared/domain/UniqueEntityID';
+import { DietType } from './DietType';
+import { Ingredients } from './Ingredients';
+import { NutritionFacts } from './NutrtionFacts';
+import { RecipeId } from './RecipeId';
 
 export interface RecipeProps {
-    id: string,
-    title: string,
-    ingredients: Ingredients,
-    readyInMinutes: number //minutes
-    dietType: DietType, // ketogenic, dairyFree, vegeterian, vegan, glutenFree, whole30
-    nutritionFacts: NutritionFacts, // servings etc...
-    instructions: string,
-    image: string, // url of image
-    aggregateSaves: number,
-    aggregateCompleted: number,
-    url: string
+  title: string;
+  ingredients: Ingredients;
+  readyInMinutes: number; //minutes
+  dietType: DietType; // ketogenic, dairyFree, vegeterian, vegan, glutenFree, whole30
+  nutritionFacts: NutritionFacts; // servings etc...
+  instructions: string;
+  image: string; // url of image
+  aggregateSaves: number;
+  aggregateCompleted: number;
+  url: string;
 }
-export class Recipe {
-    props: RecipeProps
+export class Recipe extends Entity<RecipeProps>{
 
-    public get recipeId(): string {
-        return RecipeId.create({ id: this.props.id }).id || ""
-    }
+  private constructor(props: RecipeProps, id?: UniqueEntityID) {
+    super(props, id)
+  }
 
-    private constructor(props: RecipeProps) {
-        this.props = props
-    }
+  public get title(): string {
+    return this.props.title
+  }
 
-    public static create(props: RecipeProps) {
-        const recipe = new Recipe(props)
+  public get recipeId(): RecipeId {
+    return RecipeId.create(this._id);
+  }
 
-        return recipe
-    }
+  public static create(props: RecipeProps, id?: UniqueEntityID) {
+    const recipe = new Recipe(props, id);
+
+    return recipe;
+  }
 }
+

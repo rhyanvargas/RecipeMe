@@ -1,2 +1,4 @@
 "use strict";
-console.log('Hello world!');
+Object.defineProperty(exports, "__esModule", { value: true });
+require("./shared/infra/http/app");
+//# sourceMappingURL=index.js.map
