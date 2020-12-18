@@ -1,6 +1,8 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.SaveRecipes = void 0;
+const UniqueEntityID_1 = require("../../../../shared/domain/UniqueEntityID");
+const RecipeId_1 = require("../../domain/RecipeId");
 const SaveRecipesErrors_1 = require("./SaveRecipesErrors");
 class SaveRecipes {
     constructor(recipeRepo, memberRepo) {
@@ -11,19 +13,22 @@ class SaveRecipes {
         let member;
         let recipe;
         try {
-            try { // Get Member
+            try {
+                // Get Member
                 member = await this.memberRepo.getMemberById(dto.memberId);
             }
             catch (error) {
                 return new Error(SaveRecipesErrors_1.SaveRecipesErrors.MemberNotFoundError);
             }
-            try { // Get Recipe
-                recipe = await this.recipeRepo.getRecipeById(dto.recipeId);
+            try {
+                // Get Recipe
+                recipe = await this.recipeRepo.getRecipeById(RecipeId_1.RecipeId.create(new UniqueEntityID_1.UniqueEntityID(dto.recipeId)));
             }
             catch (error) {
                 return new Error(SaveRecipesErrors_1.SaveRecipesErrors.RecipeNotFoundError);
             }
-            try { // Add Saved Recipe to update member
+            try {
+                // Add Saved Recipe to update member
                 member.addToSavedRecipes(recipe);
                 await this.memberRepo.update(member);
             }
@@ -33,7 +38,7 @@ class SaveRecipes {
             return;
         }
         catch (error) {
-            return Error("Unexpected Error");
+            return Error('Unexpected Error');
         }
     }
 }
